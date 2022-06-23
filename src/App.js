@@ -18,7 +18,7 @@ function App() {
     // let l = launches.filter(launch=>launch.launch_year !==2020);
     return (
         <div className="App">
-            {launches.filter(launch => launch.la0unch_year !== '2020').map((launch, index) =>
+            {launches.filter(launch => launch.launch_year !== '2020').map((launch, index) =>
                 <Launches
                     key={index}
                     year={launch.launch_year}
