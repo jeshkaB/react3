@@ -17,7 +17,7 @@ export default function Users() {
         <div>
             {users.map(users => <User key={users.id} users={users} choseUser={choseUser}
         />)}
-            <div> {user.map (user=> <Company key={user.id} user={user}/>)}</div>
+            <div> {user.map(user => <Company key={user.id} user={user}/>)}</div>
         </div>
     );
 }
