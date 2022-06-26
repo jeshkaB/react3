@@ -1,30 +1,25 @@
-// VARIANT 1 - детальна інфо в батьківському блоці
-/*export default function Users({user,choseUser}) {
-    return (<div>
-        <h2> {user.id} {user.name} </h2>
-            <button onClick={()=> {choseUser (user);} }>
-                company</button>
-    </div>
-    );
-}*/
+import {useEffect, useState} from "react";
+
+import User from "./User";
+import Company from "./Company";
+export default function Users() {
+    let [users, setUsers] = useState([]);
+    let [user, setUser] = useState({});
+    useEffect(() => (
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(value => value.json())
+            .then(value => setUsers(value))
+    ), []);
+    const choseUser = (item)=> {setUser(item)};
 
 
-// VARIANT 2 - детальна інфо в поточному блоці Users
-export default function Users({user}) {
-    return (<div className={'userClass'}>
-            <h2> {user.id} {user.name} </h2>
-            <button onClick={() => {
-                let userCompanyBlock = document.createElement('div');
-                document.getElementsByClassName('userClass')[user.id - 1].appendChild(userCompanyBlock);
-                document.getElementsByTagName('button')[user.id - 1].style.pointerEvents = 'none'
-                for (const userKey in user.company) {
-                    let p = document.createElement('p');
-                    userCompanyBlock.appendChild(p);
-                    p.innerText = `${userKey}: ${user.company[userKey]}`;
-                }
-            }}>
-                company
-            </button>
+    return (
+        <div>
+            {users.map(users => <User key={users.id} users={users} choseUser={choseUser}
+        />)}
+            <div> {user.map (user=> <Company key={user.id} user={user}/>)}</div>
         </div>
     );
 }
+
+
