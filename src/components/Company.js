@@ -1,9 +1,9 @@
 function Company({user}) {
     return (
         <div>
-           <p>user.Company.name</p>
-           <p>user.Company.catchPhrase</p>
-           <p>user.Company.bs</p>
+           <h2>{user.company.name}</h2>
+           <p>catchPhrase: {user.company.catchPhrase}</p>
+           <p>bs: {user.company.bs}</p>
         </div>
     );
 }
