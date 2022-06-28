@@ -1,2 +1,2 @@
-import {getUsers,getPosts} from "./users.api.service";
-export {getUsers,getPosts};
+import {getUsers,getPosts,getPostsNew} from "./users.api.service";
+export {getUsers,getPosts,getPostsNew};

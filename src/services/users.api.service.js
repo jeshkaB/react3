@@ -5,4 +5,6 @@ const getUsers = ()=> axiosInstance.get('/users').then(value=>value.data);
 
 const getPosts = (id)=> axiosInstance.get('/users/'+id+'/posts').then(value => value.data);
 
-export {getUsers,getPosts}
+const getPostsNew = (id)=> axiosInstance.get('/users/'+id+'/posts').then(value => value.data);
+
+export {getUsers,getPosts,getPostsNew}
