@@ -1,35 +1,32 @@
 // Зробити компонент, в якому буде форма, за допомоги якої можливо створити нового юзера постовим запитом на http://jsonplaceholder.typicode.com/users
-import React from 'react';
 import {useForm} from "react-hook-form";
 
-export default function FormNewUser(props) {
-    const {register,handleSubmit} = useForm({defaultValues:{name:'name',username:'username' }});
-    let obj =(obj)=>{
-        fetch ('http://jsonplaceholder.typicode.com/users',
-            {method: 'POST',
-            body: JSON.stringify(obj),
-            headers: {'Content-type': 'application/json; charset=UTF-8'}})
-            .then(response=>response.json())
-            .then(value=> console.log(value))
-    }
+import {saveUser} from "../services/api.service";
 
+export default function FormNewUser(props) {
+   const {register,handleSubmit, formState:{errors}} = useForm({defaultValues:{name:'name',username:'username',email:'email', phone: "phone", website:'website',}});
+   const submit = (obj)=>{saveUser(obj).then(result=>console.log(result))}
     return (
-        <div onSubmit={handleSubmit(obj)}>
-            <form>
+        <div >
+            <form onSubmit={handleSubmit(submit)}>
                 <input type='text' {...register('name')}/>
+                {errors.name && <span>Field is required</span>}
                 <input type='text' {...register('username')}/>
+                {errors.username && <span>Field is required</span>}
                 <input type='text' {...register('email')}/>
-                <input type='text' {...register('address street')}/>
-                <input type='text' {...register('address suite')}/>
-                <input type='text' {...register('address city')}/>
-                <input type='text' {...register('address zipcode')}/>
-                <input type='text' {...register('address geo let')}/>
-                <input type='text' {...register('address geo lng')}/>
+                {errors.email && <span>Field is required</span>}
+                <input type='text' {...register('address.street')}/>
+                {/*{errors.address.street && <span>Field is required</span>}*/}
+                <input type='text' {...register('address.suite')}/>
+                <input type='text' {...register('address.city')}/>
+                <input type='text' {...register('address.zipcode')}/>
+                <input type='text' {...register('address.geo.let')}/>
+                <input type='text' {...register('address.geo.lng')}/>
                 <input type='text' {...register('phone')}/>
                 <input type='text' {...register('website')}/>
-                <input type='text' {...register('company name')}/>
-                <input type='text' {...register('company catchPhrase')}/>
-                <input type='text' {...register('company bs')}/>
+                <input type='text' {...register('company.name')}/>
+                <input type='text' {...register('company.catchPhrase')}/>
+                <input type='text' {...register('company.bs')}/>
                 <button>save</button>
 
 
