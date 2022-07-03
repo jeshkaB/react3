@@ -1,5 +1,3 @@
-
-
 import FormNewComments from "./components/Form_new_comments";
 
 function App() {
