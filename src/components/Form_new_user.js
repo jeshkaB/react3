@@ -14,6 +14,7 @@ function FormNewUser(props) {
                address:{street:'address:street',suite:'address:suite', city:'address:city',zipcode:'address:zipcode', geo:{let:'address: geo let', lng:'address: geo lng'}},
                company:{name:'company name', catchPhrase:'company catchPhrase', bs:'company bs'}}});
    const submit = (obj)=>{saveUser(obj).then(result=>console.log(result))}
+
     return (
         <div >
             <form onSubmit={handleSubmit(submit)}>
@@ -23,19 +24,20 @@ function FormNewUser(props) {
                 {errors.username && <span>Field is required</span>}
                 <input type='text' {...register('email', {required: true})}/>
                 {errors.email && <span>Field is required</span>}
-                <input type='text' {...register('address.street')}/>
-                <input type='text' {...register('address.suite')}/>
-                <input type='text' {...register('address.city')}/>
-                <input type='text' {...register('address.zipcode')}/>
-                <input type='text' {...register('address.geo.let')}/>
-                <input type='text' {...register('address.geo.lng')}/>
+                <input type='text' {...register('address.street', {required: true})}/>
+                <input type='text' {...register('address.suite', {required: true})}/>
+                <input type='text' {...register('address.city', {required: true})}/>
+                <input type='text' {...register('address.zipcode', {required: true})}/>
+                <input type='text' {...register('address.geo.let', {required: true})}/>
+                <input type='text' {...register('address.geo.lng', {required: true})}/>
+                {errors.address.city && <span>Field is required</span>}
                 <input type='text' {...register('phone')}/>
                 <input type='text' {...register('website')}/>
                 <input type='text' {...register('company.name')}/>
                 <input type='text' {...register('company.catchPhrase')}/>
                 <input type='text' {...register('company.bs')}/>
                 <button>save</button>
-
+                {/*{console.log(errors)}*/}
 
             </form>
         </div>
