@@ -1,11 +1,12 @@
-import FormNewUser from "./components/Form_new_user";
+import {FormNewUser} from "./components";
+
 
 function App() {
-  return (
-    <div className="App">
-<FormNewUser/>
-    </div>
-  );
+    return (
+        <div className="App">
+            <FormNewUser/>
+        </div>
+    );
 }
 
 export default App;
